@@ -4,23 +4,23 @@ import { useRef, useState } from 'react'
 import { NoteData, Tag } from './App'
 
 type NoteFormPros = {
-    onSubmit : (data : NoteData) => void
+    onSubmitNote : (data : NoteData) => void
 }
-const NoteForm = ({onSubmit}: NoteFormPros) => {
+const NoteForm = ({onSubmitNote}: NoteFormPros) => {
     const titleRef = useRef<HTMLInputElement>(null) ;
     const markdownRef = useRef<HTMLTextAreaElement>(null) ; 
 const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
     const handleSubmit = (e : SubmitEvent) =>{
        e.preventDefault();
-       onSubmit({
+       onSubmitNote({
         title : titleRef.current!.value,
         markdown : markdownRef.current!.value,
         tags : selectedTags
        }) 
     }
     return (   
-    <form onSubmit={handleSubmit}> 
+    <form onSubmit={() =>handleSubmit}> 
         <div className="flex jusitfy align_items_center row">
             <div className="col">
                 <label htmlFor='title' className='block'>Title</label>
