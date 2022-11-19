@@ -1,8 +1,8 @@
-import NoteForm from "./NoteForm";
+import NoteForm, { NoteFormProps } from "./NoteForm";
 
-const NewNote = () => {
+const NewNote = ({onSubmit} : NoteFormProps) => {
     return (  <>
-        <NoteForm/>
+        <NoteForm onSubmit={onSubmit}/>
     </>);
 }
  

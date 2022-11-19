@@ -3,17 +3,19 @@ import {Link} from "react-router-dom"
 import { useRef, useState } from 'react'
 import { NoteData, Tag } from './App'
 
-type NoteFormPros = {
-    onSubmitNote : (data : NoteData) => void
+export type NoteFormProps = {
+    onSubmit : (data : NoteData) => void
 }
-const NoteForm = ({onSubmitNote}: NoteFormPros) => {
+
+
+const NoteForm = ({onSubmit}: NoteFormProps) => {
     const titleRef = useRef<HTMLInputElement>(null) ;
     const markdownRef = useRef<HTMLTextAreaElement>(null) ; 
 const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
     const handleSubmit = (e : SubmitEvent) =>{
        e.preventDefault();
-       onSubmitNote({
+       onSubmit({
         title : titleRef.current!.value,
         markdown : markdownRef.current!.value,
         tags : selectedTags
