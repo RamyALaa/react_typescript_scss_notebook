@@ -34,12 +34,12 @@ const NoteForm = ({onSubmit, onAddTag, availableTags, title = "", tags = [], mar
 
     return (   
     <form onSubmit={handleSubmit}> 
-        <div className="flex jusitfy align_items_center row">
-            <div className="col">
+        <div className="gap-8 flex jusitfy align_items_center row ">
+            <div className="col  mb-8 w-100">
                 <label htmlFor='title' className='block'>Title</label>
                 <input type="text" required={true} ref={titleRef} id="title" defaultValue={title}></input>
             </div>
-            <div className="col">
+            <div className="col w-100">
                 <label htmlFor='tags'>Tags</label>
                 <CreatableReactSelect 
                     onCreateOption={label =>{
@@ -67,15 +67,16 @@ const NoteForm = ({onSubmit, onAddTag, availableTags, title = "", tags = [], mar
             <label htmlFor='markdown' className='block'>Body</label>
             <textarea 
                 rows={15}  
+                
                 id="markdown" 
-                className='w-100' 
+                className='w-100 noresize mb-10' 
                 ref={markdownRef} 
                 required={true}
                 defaultValue={markdown}
             />
         </div>
-        <div className='flex align_items_center justify_end row'>
-            <button type='submit' >Save</button>
+        <div className='flex gap-8 align_items_center justify_end row'>
+            <button type='submit' className='button_blue' >Save</button>
             <Link to="..">
                 <button type='button' >Cancel</button>
             </Link>

@@ -99,9 +99,9 @@ function App() {
 
   
   return (
-    <div >
+    <div className='container'>
       <Routes>
-        <Route path='/' element={<NoteList notes={notesWithTags} availableTags={tags}/>} />
+        <Route path='/' element={<NoteList notes={notesWithTags} availableTags={tags} onUpdateTag={onUpdateTag} onDeleteTag={onDeleteTag} />} />
         <Route path='/new' element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />} />
         <Route path='/:id' element={<NoteLayout notes={notesWithTags}/>} >
           <Route index element={<Note onDeleteNote={onDeleteNote}/>} />

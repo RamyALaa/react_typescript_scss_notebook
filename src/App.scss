@@ -14,6 +14,10 @@
   justify-content: flex-end;
 }
 
+.justify_start{
+  justify-content: flex-start;
+}
+
 .align_items_center{
   align-items: center;
 }
@@ -22,10 +26,164 @@
   width: 100%;
 }
 
+
+
 .block{
   display: block
 }
 
 .grid{
   display : grid;
+}
+
+.container{
+  width: 80%;
+  margin: 0 auto;
+}
+.w-100{
+  width: 100%;;
+}
+.gap-8{
+  gap : 8px;
+}
+
+.mb-8{
+  margin-bottom : 8px;
+}
+
+.mb-10{
+  margin-bottom : 10px;
+}
+
+.noresize{
+  resize: none;
+}
+
+.flex_item_equal{
+  flex: 1 1 0px
+}
+.button_blue{
+
+  background-color: rgb(48, 113, 235);
+  color : white;
+  transition : scale 0.1s ease-in
+}
+
+.button_blue:active, .button_blue:hover, .button_red:active, .button_red:hover{
+  scale: 1.02;
+}
+.button_blue:focus-visible, .button_blue:focus, .button_red:focus-visible, .button_red:focus{
+  outline: none;
+}
+
+.button_red{
+  background-color: rgb(231, 48, 48);
+  color : white;
+  transition : scale 0.1s ease-in;
+  border : none;
+}
+
+.modal{
+  position : absolute;
+  top : 30px;
+  left : 50%;
+  transform: translateX(-50%);
+  max-width: 500px;
+  width: 80%;
+  z-index: 100;
+  background-color: white;
+  padding : 20px;
+  border-radius: 4px;
+  border : 1px solid rgba(0,0,0,0.5);
+  box-shadow: 0px 3px 30px 5px rgba(0,0,0,0.2);
+  transition : all 0.1s ease-in;
+  justify-content: flex-start;
+  gap:8px;
+
+  
+    .modal_title{
+      width : 100%
+    }
+    .modal_exit{
+      width : 20px;
+
+    }
+
+    .close_button{
+      align-self: flex-end;
+      width: 100px;
+      background-color: rgb(48, 113, 235);
+      color : white;
+      transition : scale 0.1s ease-in
+    }
+
+    .close_button:active, .close_button:hover{
+      scale: 1.02;
+    }
+    .close_button:focus-visible, .close_button:focus{
+      outline: none;
+    }
+
+
+    
+
+    .liste_tags{
+      input{
+        font-size: 16px;
+      }
+      
+
+      button{
+        transition : all 0.1s ease-in;
+        font-size: 16px;
+        color : rgb(129, 35, 35, 0.5);
+        border : 1px solid rgb(129, 35, 35, 0.5);
+      }
+      button:hover{
+        color : rgba(255,0,0 , 0.5);
+        border : 2px solid rgba(255,0,0 , 0.5);
+      }
+    }
+  
+}
+
+.modal_wrapper{
+  transition : opacity 0.2s ease-in;
+
+}
+
+.modal_wrapper[data-show=false]{
+  opacity : 0;
+
+  .modal{
+
+    pointer-events: none;
+  }
+}
+
+.modal_wrapper[data-show=true]{
+  opacity : 1;
+
+  .dark_background{
+    position : absolute ;
+    z-index: 10;
+    background: rgba(0,0,0,0.3);
+    top : 0;
+    bottom :0;
+    left : 0;
+    right : 0;
+  }
+
+  .modal{
+    top : 40px;
+  }
+
+
+}
+
+
+.title{
+  width : 70%;
+  font-size : 32px;
+  
 }
