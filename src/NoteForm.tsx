@@ -1,24 +1,27 @@
 import CreatableReactSelect from 'react-select/creatable'
 import {Link} from "react-router-dom"
 import { FormEvent, useRef, useState } from 'react'
-import { NoteData, Tag } from './App'
+import { Note, NoteData, Tag } from './App'
 import {v4 as uuidV4} from 'uuid'
 import {useNavigate} from 'react-router-dom'
 
 
 export type NoteFormProps = {
+
     onSubmit : (data : NoteData) => void
     onAddTag : (tag : Tag) => void
     availableTags : Tag[] ;
-}
+} & Partial<Note>
 
 
-const NoteForm = ({onSubmit, onAddTag, availableTags}: NoteFormProps) => {
+const NoteForm = ({onSubmit, onAddTag, availableTags, title = "", tags = [], markdown=""}: NoteFormProps) => {
     const titleRef = useRef<HTMLInputElement>(null) ;
     const markdownRef = useRef<HTMLTextAreaElement>(null) ; 
-    const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+    const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
     const navigate = useNavigate();
     
+
+
     const handleSubmit = (e : FormEvent) =>{
        e.preventDefault();
        onSubmit({
@@ -34,7 +37,7 @@ const NoteForm = ({onSubmit, onAddTag, availableTags}: NoteFormProps) => {
         <div className="flex jusitfy align_items_center row">
             <div className="col">
                 <label htmlFor='title' className='block'>Title</label>
-                <input type="text" required={true} ref={titleRef} id="title"></input>
+                <input type="text" required={true} ref={titleRef} id="title" defaultValue={title}></input>
             </div>
             <div className="col">
                 <label htmlFor='tags'>Tags</label>
@@ -68,6 +71,7 @@ const NoteForm = ({onSubmit, onAddTag, availableTags}: NoteFormProps) => {
                 className='w-100' 
                 ref={markdownRef} 
                 required={true}
+                defaultValue={markdown}
             />
         </div>
         <div className='flex align_items_center justify_end row'>

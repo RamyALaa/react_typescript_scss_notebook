@@ -1,7 +1,31 @@
 // affiché info, add button update, delete and back
 
-const Note = () => {
-    return ( <></> );
+import { Link, useNavigate } from "react-router-dom";
+import { useNote } from "./NoteLayout";
+
+type NoteProps = {
+    onDeleteNote : (id : string) => void
+}
+
+const Note = ({onDeleteNote} : NoteProps) => {
+const note = useNote();
+const navigate = useNavigate();
+    return ( <>
+        <div className="flex align_items_center">
+            <h1>{note.title}</h1>
+        <Link to={`/${note.id}/edit`}>
+            <button>Edit</button>
+        </Link>
+        <button onClick={()=> {onDeleteNote(note.id) 
+            navigate("/")}}>Delete</button>
+        <Link to={`/`}>
+            <button>Cancel</button>
+        </Link>
+        </div>
+        
+        {note.tags.length > 0 && note.tags.map(tag => <span key={tag.id}>tag.label</span>)}
+        <p>{note.markdown}</p>
+    </> );
 }
  
 export default Note;

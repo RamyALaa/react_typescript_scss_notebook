@@ -58,7 +58,7 @@ export function NoteList({notes, availableTags}:NoteListProps){
         </form>
         <div className="grid">
             {filterdNotes.map(note =>
-                <div className="col" key={note.id}>
+                <div className="flex justify alig_items_center" key={note.id}>
                     <NoteCard id={note.id} title={note.title} tags={note.tags}/>
                 </div>
 
