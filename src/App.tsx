@@ -5,6 +5,14 @@ import NewNote from './NewNote'
 import { useLocalStorage } from './useLocalStorage'
 import {v4 as uuidV4} from 'uuid'
 import { NoteList } from './NoteList'
+import NoteLayout from './NoteLayout'
+
+// add function update note
+// add function delete note
+// add function update tag
+// add function delete tag
+
+
 export  type Note = {
   id : string
 } & NoteData
@@ -52,13 +60,45 @@ function App() {
     setTags(prevTags => [...prevTags, tag])
   }
 
+  function onUpdateNote(id : string, {tags, ...data}: NoteData){
+    setNotes(prevNotes => { return prevNotes.filter(note =>{
+        if(note.id === id)
+          return {...note, ...data, tagdIds : tags.map(tag =>
+            tag.id)}
+        else
+          return note
+      })})
+  }
+
+  function onDeleteNote(id : string){
+    setNotes(prevNotes => {
+      return prevNotes.filter(note => note.id !== id)
+    })
+  }
+
+
+  function onUpdateTag(id : string, label : string){
+    setTags(prevTags => { return prevTags.filter(tag =>{
+        if(tag.id === id)
+          return {...tag, label}
+        else
+          return tag
+      })})
+  }
+
+  function onDeleteTag(id : string){
+    setTags(prevTags => {
+      return prevTags.filter(tag => tag.id !== id)
+    })
+  }
+
   
   return (
     <div >
       <Routes>
         <Route path='/' element={<NoteList notes={notesWithTags} availableTags={tags}/>} />
         <Route path='/new' element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />} />
-        <Route path='/:id' element={<h1>new</h1>} >
+        <Route path='/:id' element={<NoteLayout notes={notesWithTags}/>} >
           <Route index element={<h1>show</h1>} />
           <Route path="edit" element={<h1>edit</h1>}/>
         </Route>

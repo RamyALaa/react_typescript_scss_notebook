@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import {  useState } from 'react'
 import { useMemo } from 'react'
 import NoteCard from "./NoteCard"
-
-
+// add button edit tags
+// add display list tags
 type NoteListProps = {
     notes : Note[]
     availableTags : Tag[]
