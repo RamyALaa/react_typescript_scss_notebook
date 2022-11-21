@@ -2,6 +2,10 @@
   display : flex;
 }
 
+.vertical{
+  flex-direction: column;
+}
+
 .justify{
   justify-content: center;
 }
@@ -20,4 +24,8 @@
 
 .block{
   display: block
+}
+
+.grid{
+  display : grid;
 }
