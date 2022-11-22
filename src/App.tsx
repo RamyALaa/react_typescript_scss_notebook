@@ -68,7 +68,7 @@ function App() {
     console.log(data)
     setNotes(prevNotes => { return prevNotes.map(note =>{
         if(note.id === id)
-          return {...note, ...data, tagdIds : tags.map(tag =>
+          return {...note, ...data, tagIds : tags.map(tag =>
             tag.id)}
         else
           return note

@@ -1,5 +1,21 @@
+
+.container{
+  width: 80%;
+  margin: 0 auto;
+}
+.w-100{
+  width: 100%;;
+}
+.margin_auto{
+  margin : 0 auto;
+}
+
 .flex{
   display : flex;
+}
+
+.wrap{
+  flex-wrap: wrap;
 }
 
 .vertical{
@@ -22,10 +38,20 @@
   align-items: center;
 }
 
+.align_content_center{
+  align-content: center;
+}
+
+.text_align_center{
+  text-align: center;
+}
+
 .w-100{
   width: 100%;
 }
-
+.noresize{
+  resize: none;
+}
 
 
 .block{
@@ -36,28 +62,57 @@
   display : grid;
 }
 
-.container{
-  width: 80%;
-  margin: 0 auto;
-}
-.w-100{
-  width: 100%;;
-}
-.gap-8{
-  gap : 8px;
+
+
+
+@for $i from 1 through 5 {
+  .gap-#{$i*2}{
+    gap : #{$i*2}px
+  }
 }
 
-.mb-8{
-  margin-bottom : 8px;
+@for $i from 1 through 10 {
+  .mb-#{$i*2}{
+    margin-bottom : #{$i*2}px
+  }
+
+  .mt-#{$i*2}{
+    margin-top : #{$i*2}px
+  }
 }
 
-.mb-10{
-  margin-bottom : 10px;
+@for $i from 1 through 6 {
+  .mw-#{$i*200}{
+    max-width : #{$i*200}px
+  }
 }
 
-.noresize{
-  resize: none;
+
+
+
+
+.list_card{
+  grid-template-columns: repeat(3, 1fr);
+
+  a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width : 100%;
+    padding : 20px 20px;
+    box-shadow: 0px 3px 20px 5px rgba(0,0,0,0.05);
+    transition: transform 0.1s ease-in;
+  }
+  a:hover{
+    transform: translateY(-3px);
+  
+  }
 }
+
+
+
+
+
 
 .flex_item_equal{
   flex: 1 1 0px
@@ -69,19 +124,17 @@
   transition : scale 0.1s ease-in
 }
 
-.button_blue:active, .button_blue:hover, .button_red:active, .button_red:hover{
-  scale: 1.02;
-}
-.button_blue:focus-visible, .button_blue:focus, .button_red:focus-visible, .button_red:focus{
-  outline: none;
-}
-
 .button_red{
   background-color: rgb(231, 48, 48);
   color : white;
   transition : scale 0.1s ease-in;
   border : none;
 }
+
+.button_blue:focus-visible, .button_blue:focus, .button_red:focus-visible, .button_red:focus{
+  outline: none;
+}
+
 
 .modal{
   position : absolute;
@@ -186,4 +239,24 @@
   width : 70%;
   font-size : 32px;
   
+  
 }
+
+.badge{
+  background-color: rgb(48, 113, 235);
+  font-size: 12px;
+  padding : 1px 6px;
+  color : white;
+  border-radius: 4px;
+  font-weight: 600;
+
+}
+
+.notecard{
+  border-radius: 4px;
+  color : black;
+  text-decoration: none;
+
+
+}
+

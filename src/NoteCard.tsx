@@ -13,15 +13,17 @@ type NoteCardProps = {
 const NoteCard = ({id , title, tags} :NoteCardProps ) => {
     return ( 
         <Link to={`/${id}`}> 
-        <div className="flex vertical">
-            <div className="row title_card" >{title}</div>
-            <div className="row tags_card flex">
-                {tags.length > 0 && 
-                tags.map(tag => {return (
-                    <span key={tag.id}>tag.label</span>
-                )})
-                }
+        <div className="notecard margin_auto">
+            <h2 className="row title_card text_align_center mb-10 mt-2" >{title}</h2>
+            {tags.length > 0 &&
+            <div className="row tags_card flex wrap gap-4">
+                 
+                {tags.map(tag => {return (
+                    <span key={tag.id} className='badge'>{tag.label}</span>
+                )})}
+               
             </div>
+             }
         </div>
         </Link> 
      );
